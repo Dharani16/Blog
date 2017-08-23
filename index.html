@@ -2,12 +2,58 @@
 <html>
 	<head>
 		<title>Blog</title>
+		<!-- Initiallization of bootstrap and jquery -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  		<!-- external css -->
+  		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript"></script>
 	</head>
 <body>
+	<!-- header -->
+	<header>
+	 	<div class="container">
+	 		<div class="row">	
+	 			<nav class="navbar navbar-default">			
+	   				<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="	collapse" data-target="#myNavbar">
+	        				<span class="icon-bar"></span>
+	        				<span class="icon-bar"></span>
+	        				<span class="icon-bar"></span>                        
+	      				</button>
+						<a href="#"><img src="images/logo.png" alt="logo" width="130px" height="56px">  </a>
+	    			</div>
+		 			<div class="collapse navbar-collapse" id="myNavbar">
+		 				<ul class="nav navbar-nav navbar-right">
+		   					<li><a href="#" id="homeId" class="active">Home</a></li>
+		    				<li><a href="#" id = "aboutId" class="active" >About us</a></li>
+		        			<li><a href="#" id = "contactId" class="active" >Contact us</a></li>
+		        			<li><a href="#" id = "contactId" class="active" >New post</a></li>
+		      			</ul>	
+		   			</div>	  		        
+	  			</nav>
+	  		</div>
+	 	</div>		
+	</header>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+	<!-- Main section -->
+	<section>
+		<div class="container" style="height: 500px;border: 1px solid gray;">
+			<div class="row">
+				<h1>Title</h1>
+			</div>
+		</div>
+	</section>
+
+	<!-- footer -->
+	<footer>
+		<div class="container" style="background-color: gray; height: 50px;">
+			<div class="row">
+				<h3>Footer section</h3>
+			</div>
+		</div>
+	</footer>
 
 </body>
 </html>
