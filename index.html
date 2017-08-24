@@ -2,13 +2,36 @@
 <html>
 	<head>
 		<title>Blog</title>
-		<!-- Initiallization of bootstrap and jquery -->
+		<!-- initializing of bootstrap,jquery & underscore-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  		<!-- external css -->
+		
+		<!-- external css & js-->
   		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript"></script>
+		<script type="text/javascript" src="js/getBlogPost.js"></script>
+
+  		<!-- get blog title and content -->
+		<script type="text/template" id="blogDisplay">
+			<div class="blogFirst">
+				<!-- underscore template -->	
+				<div class="col-lg-12"> 
+					<div class="col-lg-3">
+						<img src="images/blog.png" id="blogThumbnail" alt="not display" width="150px;" height="150px;">
+					</div>					
+
+					<div class="col-lg-9">		
+					<% _.each(target,function(value) {%> 		
+						<h4 id="titleTag">  <%= value.title %> </h4>
+						<p id="paraTag"> <%= value.body %> </p>
+						<p id="readMoreButton"> Read more </p>
+					<% }); %>
+					</div>	
+					<hr/>
+				</div>
+			</div>	
+		</script> 		
 	</head>
 <body>
 	<!-- header -->
@@ -17,19 +40,19 @@
 	 		<div class="row">	
 	 			<nav class="navbar navbar-default">			
 	   				<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="	collapse" data-target="#myNavbar">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 	        				<span class="icon-bar"></span>
 	        				<span class="icon-bar"></span>
-	        				<span class="icon-bar"></span>                        
+	        				<span class="icon-bar"></span>                       
 	      				</button>
 						<a href="#"><img src="images/logo.png" alt="logo" width="130px" height="56px">  </a>
 	    			</div>
 		 			<div class="collapse navbar-collapse" id="myNavbar">
 		 				<ul class="nav navbar-nav navbar-right">
 		   					<li><a href="#" id="homeId" class="active">Home</a></li>
-		    				<li><a href="#" id = "aboutId" class="active" >About us</a></li>
-		        			<li><a href="#" id = "contactId" class="active" >Contact us</a></li>
-		        			<li><a href="#" id = "contactId" class="active" >New post</a></li>
+		    				<li><a href="#" id = "aboutId" class="active">About us</a></li>
+		        			<li><a href="#" id = "contactId" class="active">Contact us</a></li>
+		        			<li><a href="#" id = "contactId" class="active">New post</a></li>
 		      			</ul>	
 		   			</div>	  		        
 	  			</nav>
@@ -39,9 +62,9 @@
 
 	<!-- Main section -->
 	<section>
-		<div class="container" style="height: 500px;border: 1px solid gray;">
-			<div class="row">
-				<h1>Title</h1>
+		<div class="container" >
+			<div class="row" id="sectionPart" style="border: 1px solid gray;">
+				<div id="blogPostDisplay"></div>				
 			</div>
 		</div>
 	</section>

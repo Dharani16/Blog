@@ -1,0 +1,17 @@
+.blogFirst #titleTag{
+	font-size: 20px;
+	font-weight: bold;
+	color: #000;
+}
+#readMoreButton {
+	padding: 10px;
+	background-color: #99ddff;
+	color: #FFFFFF;
+	width: 90px;
+}
+#readMoreButton:hover{
+	background-color: #FFFFFF;
+	color: #99ddff;
+	width: 90px;
+	cursor: pointer;
+}
