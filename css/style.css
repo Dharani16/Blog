@@ -1,17 +1,47 @@
+.navbar-default .navbar-nav li a{
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.navbar-default .navbar-nav li a:hover{
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+}
+.blogFirst{
+	overflow: auto;
+	height: 550px;
+}
 .blogFirst #titleTag{
 	font-size: 20px;
 	font-weight: bold;
 	color: #000;
 }
-#readMoreButton {
+#readMoreButtonId {
 	padding: 10px;
 	background-color: #99ddff;
 	color: #FFFFFF;
 	width: 90px;
 }
-#readMoreButton:hover{
+#readMoreButtonId:hover{
 	background-color: #FFFFFF;
 	color: #99ddff;
 	width: 90px;
 	cursor: pointer;
+}
+/*gradient color*/
+#grad1 {
+    background: -webkit-linear-gradient(left, #d5abea , #ae73cc,#cd7bf7); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #d5abea , #ae73cc,#cd7bf7); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right,#d5abea , #ae73cc,#cd7bf7); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #d5abea , #ae73cc,#cd7bf7); /* Standard syntax (must be last) */
+}
+/*footer*/
+#footerPara{
+	color: #FFFFFF;
+	padding: 10px;
+}
+/*comment style*/
+#commentName {
+	color: red;
+	font-weight: bold;
 }
