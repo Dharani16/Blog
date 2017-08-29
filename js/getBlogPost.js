@@ -39,7 +39,17 @@ function readMoreButton(id){
 
 // about callback function
 function callAboutUs(){
-	//alert("about us clicked !");
 	var aboutTemp = _.template($("#blogAboutUs").text());
 	$("#blogPostDisplay").html(aboutTemp);
+}
+
+function callContactUs(){
+//	alert("contact us clicked !");
+	var contactTemp = _.template($("#blogContactUs").text());
+	$("#blogPostDisplay").html(contactTemp);	
+}
+
+//callback newpost
+function callNewPostId(){
+	alert("Process going on !");
 }
