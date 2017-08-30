@@ -1,0 +1,11 @@
+	<div class="blogFirst">
+		<div class="col-lg-12">		
+<!-- 			<% console.log(vars.res); %> -->
+			<% _.each(vars.res.slice(0,10),function(value) {%> 		
+				<h4 id="titleTag">  <%= value.title %> </h4>
+				<p id="paraTag"> <%= value.body %> </p>
+				<p id="readMoreButtonId" onclick="readMoreButton(<%= value.id %>); return false;"> Read more </p>
+				<hr/>
+			<% }); %>
+		</div>			
+	</div>	

@@ -1,3 +1,9 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+}
 .navbar-default .navbar-nav li a{
 	color: #FFFFFF;
 	font-weight: bold;
@@ -6,6 +12,12 @@
 	color: #FFFFFF;
 	font-weight: bold;
 	cursor: pointer;
+}
+.wrapper {
+    position:relative;
+    height: calc(100% - 86px);
+    margin-top:0px;
+    padding-left: 0px;
 }
 .blogFirst{
 	overflow: auto;
@@ -39,6 +51,7 @@
 #footerPara{
 	color: #FFFFFF;
 	padding: 10px;
+    margin-bottom: 0px;
 }
 /*comment style*/
 #commentName {

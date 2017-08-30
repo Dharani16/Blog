@@ -1,36 +1,32 @@
 var API_URL = "https://jsonplaceholder.typicode.com/posts";
 var API_COMMENTS = "https://jsonplaceholder.typicode.com/comments";
 var API_POST_COMMENT = "https://jsonplaceholder.typicode.com/comments?postId=";
+
 $(document).ready(function(){
-	$.getJSON(API_URL,function(data){
-		var result = {target:data};
-		console.log(result);
-		var finalResult = _.template($("#blogDisplay").text());
-		$("#blogPostDisplay").html(finalResult(result));				
+	$.get('template/header.html',function(templates){
+		$.getJSON(API_URL,function(data){
+			var result = data;
+			template = _.template(templates, {variable: 'vars'})({res: result});
+			$("#blogPostDisplay").html(template);			
+		});
 	});
 });
 
 function readMoreButton(id){
-	console.log("Id = "+id);
 	$("#blogPostDisplay").html('<img id="theImg" src="images/blogBanner.jpg" width="1170px" height="200px" />');
 	$.getJSON(API_URL,function(data){
 		$("#blogPostDisplay").append("<h2 id='theHeading'>" +data[id-1].title+ "</h2>");
 		$("#blogPostDisplay").append("<p id='theParagraph'>" +data[id-1].body+ "</p>");
 		$("#blogPostDisplay").append("<hr/>");
+
 		$("#blogPostDisplay").append("<h3> Comments </h3>");	
 		$.getJSON(API_COMMENTS,function(commentData){
-			console.log("got id --> "+id);
 			var postCommentUrl = API_POST_COMMENT + id ;
-			console.log("Got post comment url -->"+postCommentUrl);
 			$.getJSON(postCommentUrl,function(postComment){
-				$.each(postComment,function(key,value){
-					$("#blogPostDisplay").append('<img id="theImg" src="images/userIcon.png" width="56px" height="56px" />');
-					$("#blogPostDisplay").append("<h5 id='commentName'>" +postComment[key].name+ "</h5>");
-					$("#blogPostDisplay").append("<p id='commentMessage'>" +postComment[key].body+ "</p>");
+				$.each(postComment,function(key,value){	    				
+					$("#blogPostDisplay").append('<div class="thmbImage" style="float:left;margin-right:15px;"><img id="theImg" src="images/userIcon.png" width="56px" height="56px" style="overflow:auto;"/></div>');
+					$("#blogPostDisplay").append("<div class='description' style='overflow:auto;'><h5 id='commentName'>" +postComment[key].name+ "</h5><p id='commentMessage'>" +postComment[key].body+ "</p></div>");
 					$("#blogPostDisplay").append("<hr/>");
-					console.log(postComment[key].name);
-					console.log(postComment[key].email);
-					console.log(postComment[key].body);
 				});				
 			});		
 		});
@@ -39,17 +35,41 @@ function readMoreButton(id){
 
 // about callback function
 function callAboutUs(){
-	var aboutTemp = _.template($("#blogAboutUs").text());
-	$("#blogPostDisplay").html(aboutTemp);
+	$.get('template/aboutus.html',function(data){
+		template = _.template(data);
+		$("#blogPostDisplay").html(template);
+	});
 }
 
 function callContactUs(){
-//	alert("contact us clicked !");
-	var contactTemp = _.template($("#blogContactUs").text());
-	$("#blogPostDisplay").html(contactTemp);	
+	$.get('template/contactus.html',function(data){
+		template = _.template(data);
+		$("#blogPostDisplay").html(template);
+	});
 }
 
 //callback newpost
 function callNewPostId(){
-	alert("Process going on !");
+	console.log("new post");
+	$("#newPostId").click(function(){
+		var contactTemp = _.template($("#createBlogPage").text());
+		$("#blogPostDisplay").html(contactTemp);		
+	 	// clicked form button
+	 	$("#btnCreate").click(function(){
+	 		var bgTitle = $('#blgTitle').val();
+  			var bgPost = $('#blgPost').val();
+            // POST adds a random id to the object sent
+            /* $.ajax('http://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                data: {
+            	    title: 'foo',
+                	body: 'bar',
+                    userId: 1
+                }
+            }).then(function(data) {
+                    console.log(data);
+        	}); */
+	 	});	   	
+  	});
 }
+

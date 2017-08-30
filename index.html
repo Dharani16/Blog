@@ -7,120 +7,23 @@
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  		<!-- google map -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
 		<!-- external css & js-->
   		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/getBlogPost.js"></script>
-
-  		<!-- get blog title and content -->
-		<script type="text/template" id="blogDisplay">
-			<div class="blogFirst">
-				<!-- underscore template -->	
-				<div class="col-lg-12">		
-					<% _.each(target,function(value) {%> 		
-						<h4 id="titleTag">  <%= value.title %> </h4>
-						<p id="paraTag"> <%= value.body %> </p>
-						<p id="readMoreButtonId" onclick="readMoreButton(<%= value.id %>); return false;"> Read more </p>
-						<hr/>
-					<% }); %>
-				</div>			
-			</div>	
-		</script>
-
-		<!-- About US -->
-		<script type="text/template" id="blogAboutUs">
-			<div class="col-lg-8">
-				<h3>About Us</h3>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-				<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-				
-			</div>
-			<div class="col-lg-4">
-				<h3>From the Blog</h3>
-				<!-- first row -->
-				<div class="row">
-					<div class="col-lg-2 col-xs-2">
-						<img src="images/blog.png" width="70px" height="80px">
-					</div>
-					<div class="col-lg-10 col-xs-10">
-						<p style="font-weight: bold;text-transform: uppercase;padding-left: 10px;">qui est esse</p>
-						<p style="font-weight: normal;text-transform: lowercase;padding-left: 10px;margin-top: -10px;">est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate </p>
-					</div>					
-				</div>
-				<hr/>
-				<!-- second row -->
-				<div class="row">
-					<div class="col-lg-2 col-xs-2">
-						<img src="images/blog.png" width="70px" height="80px">
-					</div>
-					<div class="col-lg-10 col-xs-10">
-						<p style="font-weight: bold;text-transform: uppercase;padding-left: 10px;">qui est esse</p>
-						<p style="font-weight: normal;text-transform: lowercase;padding-left: 10px;margin-top: -10px;">est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate </p>
-					</div>					
-				</div>
-				<hr/>
-				<!-- third row -->
-				<div class="row">
-					<div class="col-lg-2 col-xs-2">
-						<img src="images/blog.png" width="70px" height="80px">
-					</div>
-					<div class="col-lg-10 col-xs-10">
-						<p style="font-weight: bold;text-transform: uppercase;padding-left: 10px;">qui est esse</p>
-						<p style="font-weight: normal;text-transform: lowercase;padding-left: 10px;margin-top: -10px;">est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate </p>
-					</div>					
-				</div>
-				<hr/>
-			</div>
-			</div>
-			</div>
-		</script>
-
-		<!-- contact Us -->
-		<script type="text/template" id="blogContactUs">
+  	
+		<!-- create blog -->
+		<script type="text/template" id="createBlogPage">
 			<div class="container">
-    			<div class="col-lg-offset-0 col-lg-6" id="panel">
-        			<h2>Get In Touch</h2>
-			        <form>
-			            <div class="group">
-			                <input type="text" required>
-			                <span class="highlight"></span>
-			                <span class="bar"></span>
-			                <label>Name</label>
-			            </div>
-
-			            <div class="group">
-			                <input type="text" required>
-			                <span class="highlight"></span>
-			                <span class="bar"></span>
-			                <label>Email</label>
-			            </div>
-
-			            <div class="group">
-			                <input type="text" required>
-			                <span class="highlight"></span>
-			                <span class="bar"></span>
-			                <label>Mobile No</label>
-			            </div>
-
-			            <div class="group">
-			                <input type="text" required>
-			                <span class="highlight"></span>
-			                <span class="bar"></span>
-			                <label>Message</label>
-			            </div>
-			            <div class="group">
-			                <center> <button type="submit" class="btn btn-warning">Send <span class="glyphicon glyphicon-send"></span></button></center>
-			            </div>
-			        </form>
-    			</div>
-
-    			<div class="col-lg-6" id="map">
-    				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d297076.28824619984!2d79.35108547354007!3d11.954601097241662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5361ab8e49cfcf%3A0xcc6bd326d2f0b04e!2sPuducherry!5e0!3m2!1sen!2sin!4v1503985852903" width="560" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-    			</div>
+				<form>
+					<h1>Create blog</h1>
+					Blog Title : 
+					<input type="text" name="blogTitleName" id="blgTitle"> <br/> <br/>
+					Blog Post : 
+					<input type="text" name="blogPostName" id="blgPost"> <br/> <br/>
+					<input type="button" name="button" value="create" id="btnCreate">
+				</form>
 			</div>
-		</script>
+		</script>		
 	</head>
 <body>
 	<!-- header -->
@@ -150,6 +53,7 @@
 	</header>
 
 	<!-- Main section -->
+	<div class="container wrapper">
 	<section>
 		<div class="container" >
 			<div class="row" id="sectionPart" style="margin-top: -20px;">
@@ -159,13 +63,40 @@
 	</section>
 
 	<!-- footer -->
-	<footer>
+	<footer style="position: absolute;bottom: 0px;">
 		<div class="container" id="grad1" style="height: 30px;">
 			<div class="row">
 				<center><p id="footerPara">Copyright © 2017. All rights reserved.</p></center>
 			</div>
 		</div>
 	</footer>
-
+	</div>
 </body>
 </html>
+
+
+<!-- header code
+<script type="text/template" id="blogDisplay">
+	<div class="blogFirst">
+		<div class="col-lg-12">		
+			<% _.each(target.slice(0,10),function(value) {%> 		
+				<h4 id="titleTag">  <%= value.title %> </h4>
+				<p id="paraTag"> <%= value.body %> </p>
+				<p id="readMoreButtonId" onclick="readMoreButton(<%= value.id %>); return false;"> Read more </p>
+				<hr/>
+			<% }); %>
+		</div>			
+	</div>	
+</script>
+ <div class="blogFirst">
+	<div class="col-lg-12">		
+		<% _.each(target.slice(0,10),function(value) {%> 		
+			<h4 id="titleTag">  <%= value.title %> </h4>
+			<p id="paraTag"> <%= value.body %> </p>
+			<p id="readMoreButtonId" onclick="readMoreButton(<%= value.id %>); return false;"> Read more </p>
+			<hr/>
+		<% }); %>
+	</div>			
+</div>	
+
+ -->
