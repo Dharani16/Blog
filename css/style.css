@@ -15,9 +15,12 @@ body{
 }
 .wrapper {
     position:relative;
-    height: calc(100% - 86px);
+    min-height: calc(100% - 86px);
     margin-top:0px;
     padding-left: 0px;
+}
+#sectionPart{
+    margin-top: -20px;
 }
 .blogFirst{
 	overflow: auto;
@@ -29,14 +32,16 @@ body{
 	color: #000;
 }
 #readMoreButtonId {
-	padding: 10px;
-	background-color: #99ddff;
+	padding: 5px 0px 5px 10px;
+	background-color: #d5abea;
 	color: #FFFFFF;
 	width: 90px;
+    margin-left: 115px;
 }
+
 #readMoreButtonId:hover{
 	background-color: #FFFFFF;
-	color: #99ddff;
+	color: #d5abea;
 	width: 90px;
 	cursor: pointer;
 }
@@ -48,19 +53,45 @@ body{
     background: linear-gradient(to right, #d5abea , #ae73cc,#cd7bf7); /* Standard syntax (must be last) */
 }
 /*footer*/
+footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+.foot{
+    height: 30px;
+}
 #footerPara{
 	color: #FFFFFF;
-	padding: 10px;
-    margin-bottom: 0px;
+    padding-top: 5px;
 }
 /*comment style*/
 #commentName {
 	color: red;
 	font-weight: bold;
 }
-/*----------------------------------------------------------------------------------------------
+#theHeading{
+    color: #000000;
+}
+#theParagraph{
+    margin-top: -30px;
+}
+/* about Us */
+.aboutLeftDesign{
+    padding-top: 10px;
+}
+.aboutLeftDesign p{
+    padding-top: 10px;
+}
+.aboutRightDesign .row{
+    padding-top: 10px;
+}
+#blogThumbnail{
+    float: left;width: 100px; height: 100px; margin-right: 15px;padding-top:10px;
+}
+/*----------------------------------------------
 		contact form style
-------------------------------------------------------------------------------------------------*/
+------------------------------------------------*/
 * {
     box-sizing: border-box;
 }
@@ -70,8 +101,6 @@ h2 {
     margin-bottom: 50px;
     color: #b675d8;
 }
-
-
 
 /* form starting stylings ------------------------------- */
 .group {
@@ -141,8 +170,6 @@ input:focus ~ label, input:valid ~ label {
         right: 50%;
     }
 
-
-
 /* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {
     width: 50%;
@@ -202,17 +229,18 @@ input:focus ~ .highlight {
 #panel{
 	border-radius: 4px;
 	background-color: #FFFFFF;
+    margin-top: 10px;
 }
-/*
-#panel {
-    border: 1px solid rgb(200, 200, 200);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
-    background: -webkit-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%);
-    background: red; 
-    background: -webkit-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%);
-    background: -o-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%); 
-    background: -moz-linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%); 
-    background: linear-gradient(90deg, #2caab3 0%, #2c8cb3 100%); 
-    border-radius: 4px;
+#map{
+    margin-top: 10px;
 }
-*/
+.btn-warning{
+    background-color: #d5abea;
+    border-color: #cd7bf7;
+    color: #FFFFFF;
+}
+.btn-warning:hover{
+    background-color: #eacdf9;
+    border-color: #cd7bf7;
+    color: #FFFFFF;
+}

@@ -12,13 +12,13 @@ $(document).ready(function(){
 	});
 });
 
+//callback readmore button
 function readMoreButton(id){
 	$("#blogPostDisplay").html('<img id="theImg" src="images/blogBanner.jpg" width="1170px" height="200px" />');
 	$.getJSON(API_URL,function(data){
 		$("#blogPostDisplay").append("<h2 id='theHeading'>" +data[id-1].title+ "</h2>");
 		$("#blogPostDisplay").append("<p id='theParagraph'>" +data[id-1].body+ "</p>");
 		$("#blogPostDisplay").append("<hr/>");
-
 		$("#blogPostDisplay").append("<h3> Comments </h3>");	
 		$.getJSON(API_COMMENTS,function(commentData){
 			var postCommentUrl = API_POST_COMMENT + id ;
@@ -41,6 +41,7 @@ function callAboutUs(){
 	});
 }
 
+// contact callback function
 function callContactUs(){
 	$.get('template/contactus.html',function(data){
 		template = _.template(data);
@@ -48,18 +49,16 @@ function callContactUs(){
 	});
 }
 
-//callback newpost
 function callNewPostId(){
-	console.log("new post");
-	$("#newPostId").click(function(){
-		var contactTemp = _.template($("#createBlogPage").text());
-		$("#blogPostDisplay").html(contactTemp);		
-	 	// clicked form button
-	 	$("#btnCreate").click(function(){
+	$.get('template/createBlog.html',function(data){
+		template = _.template(data);
+		$("#blogPostDisplay").html(template);
+			// clicked form button
+		 	/*$("#btnCreate").click(function(){
 	 		var bgTitle = $('#blgTitle').val();
   			var bgPost = $('#blgPost').val();
             // POST adds a random id to the object sent
-            /* $.ajax('http://jsonplaceholder.typicode.com/posts', {
+            $.ajax('http://jsonplaceholder.typicode.com/posts', {
                 method: 'POST',
                 data: {
             	    title: 'foo',
@@ -67,9 +66,9 @@ function callNewPostId(){
                     userId: 1
                 }
             }).then(function(data) {
-                    console.log(data);
-        	}); */
-	 	});	   	
-  	});
+            	alert("Check console");
+            	console.log(data);
+        	}); 
+	 	}); */	
+	});
 }
-
