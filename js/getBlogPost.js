@@ -3,15 +3,18 @@ var API_COMMENTS = "https://jsonplaceholder.typicode.com/comments";
 var API_POST_COMMENT = "https://jsonplaceholder.typicode.com/comments?postId=";
 
 $(document).ready(function(){
+	callIndex();
+});
+//callback homepage
+function callIndex(){
 	$.get('template/header.html',function(templates){
 		$.getJSON(API_URL,function(data){
 			var result = data;
 			template = _.template(templates, {variable: 'vars'})({res: result});
 			$("#blogPostDisplay").html(template);			
 		});
-	});
-});
-
+	});	
+}
 //callback readmore button
 function readMoreButton(id){
 	$("#blogPostDisplay").html('<img id="theImg" src="images/blogBanner.jpg" width="1170px" height="200px" />');
