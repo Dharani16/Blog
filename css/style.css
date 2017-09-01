@@ -244,3 +244,32 @@ input:focus ~ .highlight {
     border-color: #cd7bf7;
     color: #FFFFFF;
 }
+/*-------------------------------
+    create blog
+---------------------------------*/
+.createBlogTitle{
+    font-size: 18px;
+    padding: 5px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border:1px solid gray;
+}
+.createBlogMessage{
+   font-size: 18px;
+    padding: 5px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border:1px solid gray;
+}
+.createBlogLabel{
+    color: #b675d8;
+    font-size: 18px;
+    font-weight: normal;
+    pointer-events: none;
+    position: initial;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}

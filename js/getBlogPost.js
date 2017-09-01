@@ -15,6 +15,7 @@ function callIndex(){
 		});
 	});	
 }
+
 //callback readmore button
 function readMoreButton(id){
 	$("#blogPostDisplay").html('<img id="theImg" src="images/blogBanner.jpg" width="1170px" height="200px" />');
@@ -57,7 +58,26 @@ function callNewPostId(){
 		template = _.template(data);
 		$("#blogPostDisplay").html(template);
 			// clicked form button
-		 	/*$("#btnCreate").click(function(){
+			$("#btnCreate").click(function(){
+				var bgTitleHead = $('#blgTitle').val();
+				var bgPostMsg = $('#blgPost').val();
+				console.log("Title : "+ bgTitleHead + "  " + "Post message :" + bgPostMsg);
+				 // POST adds a random id to the object sent
+	            $.ajax(API_URL, {	            	
+	                method: 'POST',
+	                data: {
+	            	    title: bgTitleHead,
+	                	body:  bgPostMsg,
+	                    userId: 1
+	                }
+	            }).then(function(data) {
+	            	console.log(data);
+	        	}); 				
+			});		 	
+	});
+}
+
+/*$("#btnCreate").click(function(){
 	 		var bgTitle = $('#blgTitle').val();
   			var bgPost = $('#blgPost').val();
             // POST adds a random id to the object sent
@@ -72,6 +92,5 @@ function callNewPostId(){
             	alert("Check console");
             	console.log(data);
         	}); 
-	 	}); */	
-	});
-}
+  });
+*/	
