@@ -273,3 +273,40 @@ input:focus ~ .highlight {
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
 }
+/*-------------------------------------
+    comment form 
+---------------------------------------*/
+.cmtName, .cmtEmail, .cmtId{
+    font-size: 18px;
+    padding: 5px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border: 1px solid #b4b3b5;
+    background: transparent;
+    margin-bottom: 10px;
+}
+.cmtMessage{
+    margin-top: 5px;
+    font-size: 18px;
+    padding: 5px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: 1px solid #b4b3b5;
+    margin-bottom: 20px;
+}
+.cmtLabel{
+    color: #000000;
+    font-size: 18px;
+    font-weight: normal;
+    pointer-events: none;
+    position: initial;
+    left: 5px;
+    top: 10px;
+}
+.thmbImage{
+    margin-top: 20px;
+}
+.description{
+    margin-top: 20px;
+}
