@@ -1,0 +1,14 @@
+<div class="container">	
+	<div class="col-lg-12">
+		<% _.each(data.resCmt,function(value,key) {%>
+			<div class="col-lg-1">
+				<img src="images/userIcon.png" width="56px" height="56px" style="float:left;margin-top:10px;padding-bottom:10px ">
+			</div>
+			<div class="col-lg-11" style="padding-bottom: 0px;">
+				<h4 style="color:red;"> <%= value.name %> </h4>
+				<p style="margin-top:-10px;padding-bottom: 25px;"> <%= value.body %> </p>
+			</div>
+		<% }) %>
+	</div>
+	<hr/>
+</div>
