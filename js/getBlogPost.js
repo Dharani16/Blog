@@ -1,7 +1,7 @@
 var POST_URL = "http://192.168.1.29:1337/posts/";
 var COMMENT_URL_DATA = "http://192.168.1.29:1337/comments";
-var GET_URL = "http://192.168.1.29:1337/posts?sort=id+desc";
-var COMMENT_FIRST = "http://192.168.1.29:1337/posts/";
+const GET_URL = "http://192.168.1.29:1337/posts?sort=id+desc";
+const COMMENT_FIRST = "http://192.168.1.29:1337/posts/";
 var COMMENT_LAST = "/comments";
 var COMMENT_SORT = "?sort=id+desc";
 var postRecentId ;
@@ -16,7 +16,7 @@ $(document).ready(function(){
 function callIndex(){
 	$.get('template/header.html',function(templates){
 		$.getJSON(GET_URL,function(data){
-			var result = data;
+			let result = data;
 			template = _.template(templates,{variable:'vars'})({res:result});
 			$("#blogPostDisplay").html(template);
 		});
@@ -30,11 +30,11 @@ function readMoreButton(id){
 	console.log("postID = "+id);
 	postRecentId = id;
 	$("#blogPostDisplay").html('<div class = "container"><img id="theImg" src="images/blogBanner.jpg" width="1160px;" height="200px" /> </div>');
-	var READMORE_URL = COMMENT_FIRST + id;
+	let READMORE_URL = COMMENT_FIRST + id;
 	$.get('template/readMore.html',function(readMoreTemplate){
 		$.getJSON(READMORE_URL,function(readMoreData){
-			var readTitle = readMoreData.title;
-			var readPost = readMoreData.body;
+			let readTitle = readMoreData.title;
+			let readPost = readMoreData.body;
 			template = _.template(readMoreTemplate,{variable:'rmVars'})({re:readTitle,reb:readPost});
 			$("#blogPostDisplay").append(template);	
 			commentFormDesign();
@@ -56,7 +56,7 @@ function commentDisplay(){
 	});
 }
 
-//callback commnet form 
+//callback comment form 
 function commentFormDesign(){
 	$.get('template/cmtForm.html',function(cmtFormTemplate){
 		template = _.template(cmtFormTemplate);
@@ -66,7 +66,9 @@ function commentFormDesign(){
 			var name = $("#cmName").val();
   	 		var body = $("#cmMessages").val();
  		 	var email = $("#cmEmail").val(); 
-	 	 	console.log("Name : "+name+"Email : "+email+"PostId : "+postRecentId+"Body : "+body);
+			console.log("Name : "+name+"Email : "+email+"PostId : "+postRecentId+"Body : "+body);
+			//$("input[type=text], textarea").val("");
+			/*
 	        $.ajax(COMMENT_URL_DATA, {	            	
 	            method: 'POST',
 	            data: {
@@ -79,7 +81,7 @@ function commentFormDesign(){
 	           	alert("Comment sent successfully !!");
 	           	$("input[type=text], textarea").val("");
 	           	commentDisplay();
-	        }); 	        
+	        }); 	*/        
 		});
 	});
 }
