@@ -6,9 +6,9 @@
 			</div>
 			<div class="col-lg-10 homePageBlogDesign">
 				<h4 id="titleTag">  <%= value.title %> </h4>
-				<p id="readMoreButtonId" onclick="readMoreButton(<%= value.id %>); return false;"> Read more </p>
+				<p id="readMoreButtonId" onClick="readMoreButton(`<%= value.id %>`); return false;"> Read more </p>
 				<hr/>					
 			</div>
 		<% }); %>
 	</div>	
-</div>	
+</div>

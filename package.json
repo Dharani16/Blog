@@ -3,13 +3,9 @@
   "version": "1.0.0",
   "description": "test",
   "main": "index.js",
-  "scripts":
-  {
-    "build":"babel es6 -d es5"
-  },
-  "scripts":
-  {
-  "build":"babel --presets es2015 es6 -d es5"
+  "scripts": {
+    "build": "babel --presets es2015 es6 -d es5",
+    "watchbuild": "babel --presets es2015 es6 -d es5 --watch"
   },
   "repository": {
     "type": "git",
@@ -24,5 +20,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery-ui-dist": "^1.12.1"
   }
 }
