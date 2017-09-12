@@ -23,9 +23,7 @@ var BlogPoster = function () {
         //callIndex
         value: function callIndex() {
             $.get('template/header.html', function (templates) {
-                //console.log(templates)
                 $.getJSON(GET_URL, function (data) {
-                    //console.log(GET_URL)
                     var result = data;
                     var template = _.template(templates, { variable: 'vars' })({ res: result });
                     $("#blogPostDisplay").html(template);
@@ -34,6 +32,7 @@ var BlogPoster = function () {
             $("#formDisplay").empty();
             $("#commentsDisplay").empty();
         }
+
         //callback readmore button
 
     }, {
@@ -60,7 +59,6 @@ var BlogPoster = function () {
         value: function commentDisplay() {
             $.get('template/cmtDisplay.html', function (cmtDisp) {
                 var COMMENT_URL = COMMENT_FIRST + postRecentId + COMMENT_LAST + COMMENT_SORT;
-                console.log("Comment URL = " + COMMENT_URL);
                 $.getJSON(COMMENT_URL, function (cmtData) {
                     var cmtResult = cmtData;
                     var rows = _.template(cmtDisp, { variable: 'data' })({ resCmt: cmtResult });
@@ -93,9 +91,9 @@ var BlogPoster = function () {
                         }
                     }).done(function (data) {
                         console.log('success', data);
-                        alert('Comment sent Successfully !!');
-                        $("input[type=text], textarea").val("");
-                        commentDisplay();
+                        cmtDisp();
+                        alert('comment sent sucessfully !!');
+                        $("input[type=text],input[type=email], textarea").val("");
                     }).fail(function (xhr) {
                         console.log('error', xhr);
                     });
@@ -151,13 +149,16 @@ var BlogPoster = function () {
                         }
                     }).done(function (data) {
                         console.log('success', data);
-                        alert('Successfully Saved');
+                        alert('New Blog sent successfully !!!');
+                        getPostId();
                         $("input[type=text], textarea").val("");
                     }).fail(function (xhr) {
                         console.log('error', xhr);
                     });
                 });
             });
+            $("#formDisplay").empty();
+            $("#commentsDisplay").empty();
         }
     }]);
 
@@ -166,6 +167,14 @@ var BlogPoster = function () {
 
 var obj = new BlogPoster();
 obj.callIndex();
+
+function callIndex() {
+    obj.callIndex();
+}
+
+function cmtDisp() {
+    obj.commentDisplay();
+}
 
 function readMoreButton(id) {
     obj.readMoreButton(id);
@@ -182,4 +191,11 @@ function callContactUs() {
 
 function callNewPostId() {
     obj.callNewPostId();
+}
+
+function getPostId() {
+    $.getJSON(GET_URL, function (data) {
+        var lastPostID = data[0].id;
+        readMoreButton(lastPostID);
+    });
 }

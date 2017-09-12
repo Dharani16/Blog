@@ -10,9 +10,7 @@ class BlogPoster{
     //callIndex
     callIndex(){
         $.get('template/header.html',function(templates){
-            //console.log(templates)
             $.getJSON(GET_URL,function(data){
-                //console.log(GET_URL)
                 let result = data;
                 let template = _.template(templates,{variable:'vars'})({res:result});
                 $("#blogPostDisplay").html(template);
@@ -21,6 +19,7 @@ class BlogPoster{
         $("#formDisplay").empty();
         $("#commentsDisplay").empty();
     }  
+
     //callback readmore button
     readMoreButton(id){
         postRecentId = id
@@ -41,7 +40,6 @@ class BlogPoster{
     commentDisplay(){
         $.get('template/cmtDisplay.html',function(cmtDisp){
             var COMMENT_URL = COMMENT_FIRST + postRecentId + COMMENT_LAST + COMMENT_SORT;
-            console.log("Comment URL = "+COMMENT_URL)
             $.getJSON(COMMENT_URL,function(cmtData){
                 var cmtResult = cmtData;
                 let rows =  _.template(cmtDisp,{variable:'data'})({resCmt:cmtResult});
@@ -56,30 +54,30 @@ class BlogPoster{
             let template = _.template(cmtFormTemplate);
             $("#formDisplay").html(template);
             //submit comment
-		    $("#btnCmtSubmit").click(function(){
-                var name = $("#cmName").val();
-                var body = $("#cmMessages").val();
-                var email = $("#cmEmail").val(); 
-                console.log("Name : "+name+"Email : "+email+"PostId : "+postRecentId+"Body : "+body); 
-                $.ajax(COMMENT_URL_DATA, {	            	
-	                method: 'POST',
-	                data: {
-	          	        name: name,
-	              	    body:  body,
-	                    email: email,
-	                    postId: postRecentId
-	                }
-	            }).done(function(data) {
-                  console.log('success', data);
-                  alert('Comment sent Successfully !!');
-                  $("input[type=text], textarea").val("");
-                  commentDisplay();
+            $("#btnCmtSubmit").click(function(){
+                  var name = $("#cmName").val();
+                  var body = $("#cmMessages").val();
+                  var email = $("#cmEmail").val(); 
+                  console.log("Name : "+name+"Email : "+email+"PostId : "+postRecentId+"Body : "+body);                   
+                  $.ajax(COMMENT_URL_DATA, {	            	
+                    method: 'POST',
+                    data: {
+                        name: name,
+                        body:  body,
+                        email: email,
+                        postId: postRecentId
+                    }
+                }).done(function(data) {
+                    console.log('success', data);
+                    cmtDisp();
+                    alert('comment sent sucessfully !!');                    
+                    $("input[type=text],input[type=email], textarea").val("");
+                })
+                  .fail(function(xhr) {
+                    console.log('error', xhr);
+                });  	
               })
-              .fail(function(xhr) {
-                  console.log('error', xhr);
-              }); 	
             })
-        })
     }
 
     // about callback function
@@ -121,7 +119,8 @@ class BlogPoster{
                     }
                 }).done(function(data) {
                   console.log('success', data);
-                  alert('Successfully Saved');
+                  alert('New Blog sent successfully !!!');
+                  getPostId();
                   $("input[type=text], textarea").val("");
                 })
                 .fail(function(xhr) {
@@ -129,12 +128,21 @@ class BlogPoster{
                 });
             });			
         });
+        $("#formDisplay").empty();
+        $("#commentsDisplay").empty();
     }
-
 }
 
 let obj = new BlogPoster()
-obj.callIndex();
+obj.callIndex()
+
+function callIndex() {
+    obj.callIndex();
+} 
+
+function cmtDisp(){
+    obj.commentDisplay();
+}
 
 function readMoreButton(id) {
     obj.readMoreButton(id);
@@ -151,4 +159,11 @@ function callContactUs(){
 
 function callNewPostId(){
     obj.callNewPostId()
+}
+
+function getPostId(){
+    $.getJSON(GET_URL,function(data){
+        let lastPostID = data[0].id
+        readMoreButton(lastPostID);
+    })
 }
